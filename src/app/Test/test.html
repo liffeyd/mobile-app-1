@@ -1,0 +1,28 @@
+<header class="header">
+    <h1>Testing Area</h1>
+
+</header>
+<button (click)="getCounties()">Load Locations</button>
+
+<ul>
+    @for (county of counties(); track county.LocationId) {
+        <li>{{ county.Title }} {{ county.Description }}</li>
+        } @empty {
+        <li>There are no locations to display.</li>
+        }  
+</ul>
+<p>{{ counties().length }} counties loaded.</p>
+
+<p>Error: {{ httpError() }}</p>
+
+<button (click)="testApi()">Test API</button>
+<p>Test Message: {{ testMessage() }}</p>
+
+<button (click)="loadVideos()">Load Videos</button>
+<p>Videos loaded: {{ videos().videos.length }}</p>
+<ul>
+    @for (video of videos().videos; track video.id) {
+        <li>{{ video.title }}</li>
+        } @empty {
+        <li>No videos to display.</li>
+        }
