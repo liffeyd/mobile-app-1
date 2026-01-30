@@ -86,6 +86,28 @@ export class TestComponent {
     }
     });
   }
+  getCountiesJson(): void {
+    console.log('Loading locations...');
+    this.memberService.getLocationsJson()
+    .subscribe({
+      next: (response) => {
+        this.counties.set(response);
+        console.log('Number of counties loaded: ' + this.counties().length);
+        console.log(this.counties());
+     },
+      complete:() => {
+
+        //this.countyCount.set(this.counties.location.length);
+      },
+      error:(err: HttpErrorResponse) => {
+        this.httpError.set('Error retrieving counties: ' + err.message);  
+        console.log('Error in getCounties: ' + err.message);
+        console.log('Error status: ' + err.status);
+        
+        this.memberService.handleRestError(err);
+    }
+    });
+  }
 
   loadVideos(): void {
     this.memberService.getVideos()

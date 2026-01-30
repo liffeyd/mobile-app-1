@@ -3,7 +3,7 @@
 
 </header>
 <button (click)="getCounties()">Load Locations</button>
-
+<button (click)="getCountiesJson()">Load Locations (JSON)</button>
 <ul>
     @for (county of counties(); track county.LocationId) {
         <li>{{ county.Title }} {{ county.Description }}</li>

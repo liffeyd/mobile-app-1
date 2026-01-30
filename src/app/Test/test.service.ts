@@ -15,8 +15,9 @@ export class TestService {
   constructor() {  }
 
   private httpClient = inject(HttpClient);
-
-  private _urlBase: string = 'https://dev.rospaiart.ie/API/';
+  
+  private _urlBase: string = 'https://macdev.rospaiart.ie/API/';
+//  private _urlBase: string = 'https://rospaiart.ie/API/';
   private _urlModule: string = 'testAPIModule/test/';
 
   // Counties
@@ -24,7 +25,10 @@ export class TestService {
     console.log('Getting locations from API');
     return this.httpClient.get<County[]>(this._urlBase + this._urlModule + 'loc2');
   }
-
+  getLocationsJson(): Observable<County[]> {
+    console.log('Getting locations from API');
+    return this.httpClient.get<County[]>(this._urlBase + this._urlModule + 'loc3');
+  }
   sayHello(): Observable<string> {
     console.log('Saying hello from API');
 
